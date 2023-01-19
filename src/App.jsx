@@ -1,55 +1,20 @@
-import { useParams } from "react-router";
 import React, { useState } from "react";
 import { Routes, Route, Link } from "react-router-dom";
-
-const Home = (props) => {
-  return (
-    <div>
-      <h1 style={{ color: "red" }}>Welcome</h1>
-      {/* <Link to={"/about"}>Go to About </Link> */}
-    </div>
-  );
-};
-
-const Number = (props) => {
-  const { number } = useParams();
-
-  return (
-    <div>
-      <h1 style={{ color: "blue" }}>The number is: {number}</h1>
-      {/* <Link to={"/"}>Go Home</Link> */}
-    </div>
-  );
-};
-
-const Word = (props) => {
-  const { word } = useParams();
-
-  return <h1 style={{ color: "blue" }}>The word is: {word} </h1>;
-};
-
-const ChangeColor = (props) => {
-  const { wcolor } = useParams();
-  const { word } = useParams();
-  const { bcolor } = useParams();
-
-  return (
-    <h1 style={{ color: wcolor, backgroundColor: bcolor }}>
-      The word is: {word}
-    </h1>
-  );
-};
+import Home from "./components/Home";
+import ChangeColor from "./components/ChangeColor";
+import Choose from "./components/Choose";
 
 
 function App() {
   return (
     <div>
       <h1>Routing Example</h1>
+      <Link to={"/home"}>Go Home</Link>
+
 
       <Routes>
-        <Route path="/:number" element={<Number />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/:word" element={<Word />} />
+        <Route path="/:input" element={<Choose />} />
         <Route path="/:word/:wcolor/:bcolor" element={<ChangeColor />} />
       </Routes>
     </div>
